@@ -18,22 +18,6 @@ myApp.factory('mapService', function($http, $q, $rootScope) {
         return deferred.promise;
     };
 
-    // mapFactory.showMap = function(address){
-    //     var coordinates = [];
-    //     var geocoder =  new google.maps.Geocoder();
-    //     geocoder.geocode( { 'address': address}, function(results, status) {
-    //         if (status == google.maps.GeocoderStatus.OK) {
-    //             coordinates.push(results[0].geometry.location.lat());
-    //             coordinates.push(results[0].geometry.location.lng());
-    //             var map = displayMap(coordinates);
-    //             //setMarker(coordinates, map);
-    //             //searchLocation(map,coordinates);
-    //         } else {
-    //             alert("Something got wrong " + status);
-    //         }
-    //     });
-    // };
-
     mapFactory.displayMap = function(coordinates) {
         var mapProp = {
             center:new google.maps.LatLng(coordinates[0],coordinates[1]),
@@ -53,23 +37,31 @@ myApp.factory('mapService', function($http, $q, $rootScope) {
     mapFactory.searchLocation = function (map, coordinates) {
         var request = {
             location:new google.maps.LatLng(coordinates[0],coordinates[1]) ,
-            radius: '500',
+            radius: '1500',
             types: ['restaurant']
         };
-        // Create the PlaceService and send the request.
-        // Handle the callback with an anonymous function.
+        var deferred = $q.defer();
         var service = new google.maps.places.PlacesService(map);
+        var places = [];
+        var markers = [];
         service.nearbySearch(request, function(results, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 for (var i = 0; i < results.length; i++) {
                     var place = results[i];
+                    places.push(place.name);
                     var marker = new google.maps.Marker({
                         position: place.geometry.location
                     });
                     marker.setMap(map);
+                    marker.place=place.name;
+                    markers.push(marker);
                 }
+                $rootScope.$apply(deferred.resolve({places: places, markers: markers}));
+            }else{
+                $rootScope.$apply(deferred.reject("error"));
             }
         });
+        return deferred.promise;
     };
 
     return mapFactory;
