@@ -3,15 +3,12 @@ var myApp = angular.module('myApp', []);
 myApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-        when('/map/:address', {
-            templateUrl: 'templates/map.html',
-            controller: 'mapController'
+        when('/restaurants', {
+            templateUrl: 'templates/restaurants.html',
+            controller: 'restaurantController'
         }).
         otherwise({
             redirectTo: '/'
         });
     }]);
 
-myApp.controller('AddOrderController', function($scope) {
-    $scope.message = 'This is Add new order screen';
-});
