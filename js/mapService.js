@@ -44,25 +44,25 @@ myApp.factory('mapService', function($http, $q, $rootScope) {
         var service = new google.maps.places.PlacesService(map);
         var places = [];
         var markers = [];
+        var placeDescriptionList = [];
         service.nearbySearch(request, function(results, status) {
             if (status == google.maps.places.PlacesServiceStatus.OK) {
                 for (var i = 0; i < results.length; i++) {
                     var place = results[i];
                     places.push(place.name);
+                    placeDescriptionList.push(place);
                     var marker = new google.maps.Marker({
                         position: place.geometry.location
                     });
                     marker.setMap(map);
-                    marker.place=place.name;
                     markers.push(marker);
                 }
-                $rootScope.$apply(deferred.resolve({places: places, markers: markers}));
+                $rootScope.$apply(deferred.resolve({places: places, markers: markers, placeDescriptionList: placeDescriptionList}));
             }else{
                 $rootScope.$apply(deferred.reject("error"));
             }
         });
         return deferred.promise;
     };
-
     return mapFactory;
 });
