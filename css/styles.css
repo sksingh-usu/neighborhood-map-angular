@@ -1,3 +1,7 @@
+body {
+    padding-top: 10px;
+    background-color: #F5F5F5;
+}
 .star-ratings-sprite {
     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
     font-size: 0;
@@ -14,4 +18,14 @@
     float: left;
     height: 21px;
     display:block;
+}
+
+.popular-maps {
+    text-align: center;
+    color: white;
+    font-size: large;
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    margin: auto;
 }
