@@ -23,7 +23,7 @@ Neighbourhood Map
 
 ### Architecture###
 This app employs MVVM model of Angular js. MVVM stands for Model-View-ViewModel. In this app it is achieved as can be explained using following image.
-![MVVM](/frontend-nanodegree-mobile-portfolio-master/data/mvvm.PNG)
+![MVVM](/neighborhood-map/blob/master/images/mvvm.PNG)
 
 Angular-Routing: ng-route after 1.4.0 was implemented as separate library instead of integral part of Angular.js. It defined the binding of View-Controller(View-Model). In the controller class we inject the service class. In this case the controller is retaurantController.js and Service injected is mapService.js
 
