@@ -46,7 +46,7 @@ myApp.controller('restaurantController', function ($routeParams, $location, $sco
     $rootScope.currentBounceIndex = -1;
     $scope.getContent = function (index) {
         if (index != -1) {
-            if($rootScope.currentBounceIndex != -1){
+            if ($rootScope.currentBounceIndex != -1) {
                 $rootScope.markers[$rootScope.currentBounceIndex].setAnimation(null);
             }
             $rootScope.currentBounceIndex = index;

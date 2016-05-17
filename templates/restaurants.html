@@ -14,19 +14,24 @@
                     <a class="navbar-brand">Neighbourhood Search</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><form style="margin-top: 10px;"> <input ng-model = "inputAddress" type="text"  name="search" id="search" placeholder="Enter City Name" required>
-                        <button ng-click= "goTo()" type="submit" class = "btn btn-primary btn-sm" >Search Again </button></form></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+                    <li>
+                        <form style="margin-top: 10px;"><input ng-model="inputAddress" type="text" name="search"
+                                                               id="search" placeholder="Enter City Name" required>
+                            <button ng-click="goTo()" type="submit" class="btn btn-primary btn-sm">Search Again</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <div class="row">
         <div class="col-md-3">
             <div style="height:100%; background-color: khaki">
                 <input type="text" class="form-control" name="search" id="search" placeholder="search" ng-model="filter"
                        ng-keyup="updateMarkers()">
                 <ul class=" nav nav-pills nav-stacked" style="overflow-y: scroll; height:500px;">
-                    <li id='{{place.name}}' data-toggle="collapse" data-target="#content_{{$index}}" aria-expanded="false"
+                    <li id='{{place.name}}' data-toggle="collapse" data-target="#content_{{$index}}"
+                        aria-expanded="false"
                         ng-repeat="place in (filteredPlaces = (placeDescriptionList | filter:filter))">
                         <a ng-click="getContent($index)">{{place.name}} </a>
                         <div id="content_{{$index}}" class="nav collapse" aria-labelledby="{{place.name}}">
