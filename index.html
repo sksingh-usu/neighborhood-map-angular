@@ -13,24 +13,21 @@
         }
     </style>
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" style="background-color: black">
 <div class = "container" ng-controller="homeController">
     <div class = "jumbotron">
         <h1>Neighbourhood Map</h1>
         <p>
             <form>
              <input ng-model = "inputAddress" type="text"  name="search" id="search" placeholder="Enter City Name" required>
-            <button ng-click= "renderMap()" type="submit" class = "btn btn-primary btn-lg" >Search City </button>
+            <button ng-click= "goTo()" type="submit" class = "btn btn-primary btn-lg" >Search City </button>
             </form>
         </p>
     </div>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
             <div ng-view></div>
-        </div>
-        <div class="col-md-9" id="googleMap" style="height:500px;"></div>
     </div>
 </div><!-- /.container -->
 
