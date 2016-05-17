@@ -1,4 +1,5 @@
-myApp.factory('mapService', function($http, $q, $rootScope) {
+"use strict";
+myApp.factory('mapService', function($http, $q, $rootScope, $location) {
     var mapFactory = {};
     mapFactory.geoCodeLocation = function (address) {
         var deferred = $q.defer();
@@ -11,8 +12,8 @@ myApp.factory('mapService', function($http, $q, $rootScope) {
                 $rootScope.$apply(deferred.resolve({coordinates: coordinates}));
             }else {
                 deferred.reject(status);
-                alert("Something got wrong " + status);
-               $rootScope.$apply(deferred.reject({coordinates:status}));
+                $location.path('/error');
+                $rootScope.$apply(deferred.reject({coordinates:status}));
             }
         });
         return deferred.promise;

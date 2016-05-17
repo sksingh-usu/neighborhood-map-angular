@@ -1,5 +1,8 @@
+"use strict";
 myApp.controller('restaurantController', function ($routeParams, $location, $scope, mapService, $rootScope) {
-    $('.jumbotron').css('display', 'none');
+
+    $('.homePage').css('display', 'none');
+
     $scope.updateMarkers = function () {
         var A = $scope.filteredPlaces;
         var pinList = [];
